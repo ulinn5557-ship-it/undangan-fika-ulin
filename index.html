@@ -568,20 +568,27 @@
 
     setInterval(updateCountdown, 1000);
 
- // MENYALIN NOMOR REKENING DENGAN NOTIFIKASI TOAST
+ // SALIN NOMOR REKENING TO CLIPBOARD
 
-    function salinTeks(nomorRekening, namaBank) {
-      navigator.clipboard.writeText(nomorRekening).then(() => {
-        const toast = document.getElementById("toast");
-        toast.textContent = `Nomor Rekening ${namaBank} berhasil disalin!`;
-        toast.hidden = false;
+    function salinTeks(elementId, namaBank) {
+      const teks = document.getElementById(elementId).innerText;
 
-        setTimeout(() => {
-          toast.hidden = true;
-        }, 2500);
-      }).catch(err => {
-        console.error("Gagal menyalin nomor rekening: ", err);
-      });
+      // Membuat input sementara untuk menyalin teks
+      const tempInput = document.createElement("input");
+      tempInput.value = teks;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+
+      // Menampilkan pesan notifikasi singkat
+      const toast = document.getElementById("toast");
+      toast.textContent = `No. Rekening ${namaBank} berhasil disalin!`;
+      toast.style.display = "block";
+
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 2500);
     }
 
   </script>
