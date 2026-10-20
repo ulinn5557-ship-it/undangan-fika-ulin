@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Undangan Pernikahan Fika & Ulin</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #f8f5ee;
+      --green: #405b49;
+      --sage: #dce5d7;
+      --gold: #b69a65;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--green);
+      font-family: Georgia, "Times New Roman", serif;
+      text-align: center;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* SAMPUL */
+
+    .cover {
+      min-height: 100svh;
+      padding: 35px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(
+        160deg,
+        #edf0e6,
+        #f8f5ee 65%
+      );
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      margin-bottom: 18px;
+    }
+
+    .cover h1 {
+      font-size: clamp(38px, 8vw, 65px);
+      font-weight: normal;
+      margin: 18px 0;
+    }
+
+    .ampersand {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-photo {
+      width: min(270px, 75vw);
+      height: 320px;
+      object-fit: cover;
+      border: 7px solid white;
+      outline: 1px solid #c9cdbd;
+      outline-offset: 5px;
+      border-radius: 140px 140px 12px 12px;
+      margin: 12px 0 24px;
+      background: var(--sage);
+    }
+
+    .date {
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    /* TOMBOL */
+
+    .button {
+      display: inline-block;
+      border: none;
+      border-radius: 30px;
+      background: var(--green);
+      color: white;
+      padding: 14px 25px;
+      margin-top: 22px;
+      font-family: inherit;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: #293d30;
+    }
+
+    /* ISI UNDANGAN */
+
+    .section {
+      padding: 70px 22px;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: clamp(30px, 6vw, 42px);
+      font-weight: normal;
+      margin: 12px 0 22px;
+    }
+
+    .intro {
+      line-height: 1.9;
+      max-width: 530px;
+      margin: 0 auto;
+    }
+
+    .portrait {
+      width: min(320px, 85%);
+      max-height: 390px;
+      object-fit: cover;
+      border-radius: 160px 160px 8px 8px;
+      margin: 30px auto;
+      display: block;
+      background: var(--sage);
+    }
+
+    .couple-name {
+      font-size: 25px;
+      margin: 10px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 30px auto;
+    }
+
+    /* HITUNG MUNDUR */
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 30px auto;
+    }
+
+    .countdown-item {
+      background: var(--green);
+      color: white;
+      border-radius: 12px;
+      padding: 18px 12px;
+      min-width: 75px;
+    }
+
+    .countdown-item strong {
+      display: block;
+      font-size: 27px;
+      font-weight: normal;
+    }
+
+    .countdown-item span {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* DETAIL ACARA */
+
+    .event {
+      background: var(--sage);
+      padding: 35px 20px;
+      border-radius: 12px;
+      margin-top: 25px;
+      line-height: 1.9;
+    }
+
+    .event h3 {
+      font-size: 25px;
+      font-weight: normal;
+    }
+
+    /* TOMBOL MUSIK */
+
+    .music-control {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 100;
+    }
+
+    .music-control .button {
+      margin: 0;
+      padding: 12px 18px;
+      box-shadow: 0 3px 12px #0002;
+    }
+
+    /* PENUTUP */
+
+    footer {
+      background: var(--green);
+      color: white;
+      padding: 35px 20px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 480px) {
+      .hero-photo {
+        height: 280px;
+      }
+
+      .section {
+        padding: 55px 22px;
+      }
+
+      .countdown {
+        gap: 8px;
+      }
+
+      .countdown-item {
+        min-width: 65px;
+        padding: 14px 9px;
+      }
+
+      .countdown-item strong {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SAMPUL UNDANGAN -->
+
+  <section class="cover" id="sampul">
+
+    <p class="eyebrow">The Wedding Of</p>
+
+    <h1>
+      Fika <span class="ampersand">&</span> Ulin
+    </h1>
+
+    <img
+      class="hero-photo"
+      src="images/pasangan.jpg"
+      alt="Foto Fika dan Ulin"
+    >
+
+    <p class="date">14 MARET 2027</p>
+
+    <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+
+    <button
+      class="button"
+      id="openButton"
+      onclick="bukaUndangan()"
+      type="button"
+    >
+      Buka Undangan
+    </button>
+
+  </section>
+
+
+  <!-- ISI UNDANGAN -->
+
+  <main id="isiUndangan" hidden>
+
+    <!-- TOMBOL MUSIK -->
+
+    <div class="music-control">
+      <button
+        class="button"
+        id="musicButton"
+        onclick="toggleMusik()"
+        type="button"
+      >
+        ♫ Putar Musik
+      </button>
+    </div>
+
+
+    <!-- SALAM PEMBUKA -->
+
+    <section class="section">
+
+      <p class="eyebrow">
+        Assalamu'alaikum Wr. Wb.
+      </p>
+
+      <h2>Dengan Bahagia</h2>
+
+      <p class="intro">
+        Dengan memohon rahmat dan ridha Allah SWT,
+        kami bermaksud mengundang Anda untuk hadir
+        dalam acara pernikahan kami.
+      </p>
+
+      <img
+        class="portrait"
+        src="images/pasangan (2).jpg"
+        alt="Potret Fika dan Ulin"
+        loading="lazy"
+      >
+
+      <p class="couple-name">
+        Fika Dwi Aryanti, S.Pd.
+      </p>
+
+      <p>
+        Putri dari Bapak Sugarto, S.Pd.
+        dan Ibu Hartini
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="couple-name">
+        Ulinnuha Surya Sulistyo Widagdo, S.Pd.
+      </p>
+
+      <p>
+        Putra dari Bapak Slamet Widodo (Alm.)
+        dan Ibu Ema Sulistyani
+      </p>
+
+    </section>
+
+
+    <!-- HITUNG MUNDUR -->
+
+    <section class="section">
+
+      <p class="eyebrow">Counting The Days</p>
+
+      <h2>Menuju Hari Bahagia</h2>
+
+      <div class="countdown">
+
+        <div class="countdown-item">
+          <strong id="days">0</strong>
+          <span>HARI</span>
+        </div>
+
+        <div class="countdown-item">
+          <strong id="hours">0</strong>
+          <span>JAM</span>
+        </div>
+
+        <div class="countdown-item">
+          <strong id="minutes">0</strong>
+          <span>MENIT</span>
+        </div>
+
+        <div class="countdown-item">
+          <strong id="seconds">0</strong>
+          <span>DETIK</span>
+        </div>
+
+      </div>
+
+      <p id="countdownMessage"></p>
+
+    </section>
+
+
+    <!-- DETAIL ACARA -->
+
+    <section class="section">
+
+      <p class="eyebrow">Save The Date</p>
+
+      <h2>Hari Bahagia Kami</h2>
+
+      <div class="event">
+
+        <h3>Akad Nikah</h3>
+
+        <p>
+          Minggu, 14 Maret 2027<br>
+          Pukul 09.00 WIB
+        </p>
+
+        <div class="divider"></div>
+
+        <h3>Resepsi</h3>
+
+        <p>
+          Minggu, 14 Maret 2027<br>
+          Pukul 10.00 WIB - selesai
+        </p>
+
+        <p>
+          <strong>Lokasi Acara</strong><br>
+          Tugu, Sidowayah, Panekan<br>
+          Kabupaten Magetan, Jawa Timur
+        </p>
+
+        <a
+          class="button"
+          href="https://maps.app.goo.gl/4reZ29ByjKg4NxPa6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Buka Google Maps
+        </a>
+
+        <br>
+
+        <a
+          class="button"
+          href="https://wa.me/6285183375960?text=Assalamu%27alaikum%2C%20saya%20ingin%20mengonfirmasi%20kehadiran%20di%20acara%20pernikahan%20Fika%20dan%20Ulin"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Konfirmasi Kehadiran
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- PENUTUP -->
+
+    <footer>
+
+      <p>
+        Merupakan kebahagiaan bagi kami
+        atas doa dan kehadiran Anda.
+      </p>
+
+      <p>
+        Wassalamu'alaikum Wr. Wb.
+      </p>
+
+      <p>Fika & Ulin</p>
+
+    </footer>
+
+  </main>
+
+
+  <!-- FILE MUSIK -->
+
+  <audio
+    id="musik"
+    src="audio/musik.mp3"
+    loop
+    preload="none"
+  ></audio>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    // MEMBUKA UNDANGAN DAN MENCOBA MEMUTAR MUSIK
+
+    async function bukaUndangan() {
+
+      const isi = document.getElementById("isiUndangan");
+      const musik = document.getElementById("musik");
+      const musicButton = document.getElementById("musicButton");
+
+      isi.hidden = false;
+
+      document.getElementById("openButton").textContent =
+        "Undangan Dibuka";
+
+      isi.scrollIntoView({
+        behavior: "smooth"
+      });
+
+      try {
+        await musik.play();
+        musicButton.textContent = "Ⅱ Jeda Musik";
+      } catch (error) {
+        musicButton.textContent = "♫ Putar Musik";
+        console.log(
+          "Musik belum bisa diputar. Periksa file audio/musik.mp3",
+          error
+        );
+      }
+
+    }
+
+
+    // MEMUTAR DAN MENJEDA MUSIK
+
+    async function toggleMusik() {
+
+      const musik = document.getElementById("musik");
+      const musicButton = document.getElementById("musicButton");
+
+      if (musik.paused) {
+
+        try {
+          await musik.play();
+          musicButton.textContent = "Ⅱ Jeda Musik";
+        } catch (error) {
+          musicButton.textContent = "Musik gagal diputar";
+          console.log("Periksa file musik:", error);
+        }
+
+      } else {
+
+        musik.pause();
+        musicButton.textContent = "♫ Putar Musik";
+
+      }
+
+    }
+
+
+    // HITUNG MUNDUR MENUJU ACARA
+
+    function updateCountdown() {
+
+      const target = new Date(
+        "2027-03-14T09:00:00+07:00"
+      ).getTime();
+
+      const distance = target - Date.now();
+
+      if (distance <= 0) {
+
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+
+        document.getElementById("countdownMessage").textContent =
+          "Hari bahagia telah tiba!";
+
+        return;
+      }
+
+      document.getElementById("days").textContent =
+        Math.floor(distance / 86400000);
+
+      document.getElementById("hours").textContent =
+        Math.floor((distance % 86400000) / 3600000);
+
+      document.getElementById("minutes").textContent =
+        Math.floor((distance % 3600000) / 60000);
+
+      document.getElementById("seconds").textContent =
+        Math.floor((distance % 60000) / 1000);
+
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+  </script>
+
+</body>
+</html>
