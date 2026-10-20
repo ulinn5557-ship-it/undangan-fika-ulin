@@ -568,6 +568,22 @@
 
     setInterval(updateCountdown, 1000);
 
+ // MENYALIN NOMOR REKENING DENGAN NOTIFIKASI TOAST
+
+    function salinTeks(nomorRekening, namaBank) {
+      navigator.clipboard.writeText(nomorRekening).then(() => {
+        const toast = document.getElementById("toast");
+        toast.textContent = `Nomor Rekening ${namaBank} berhasil disalin!`;
+        toast.hidden = false;
+
+        setTimeout(() => {
+          toast.hidden = true;
+        }, 2500);
+      }).catch(err => {
+        console.error("Gagal menyalin nomor rekening: ", err);
+      });
+    }
+
   </script>
 
 </body>
